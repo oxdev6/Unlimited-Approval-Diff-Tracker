@@ -1,0 +1,33 @@
+{
+  "name": "unlimited-approval-tracker",
+  "version": "0.1.0",
+  "private": true,
+  "description": "CLI and web tool to track unlimited ERC20 approvals across Ethereum and Arbitrum over time.",
+  "scripts": {
+    "dev:backend": "pnpm --filter uat-backend dev",
+    "dev:web": "pnpm --filter uat-web dev",
+    "dev:cli": "pnpm --filter uat-cli dev",
+    "dev": "concurrently \"pnpm dev:backend\" \"pnpm dev:web\"",
+    "build": "pnpm --filter uat-backend build && pnpm --filter uat-web build && pnpm --filter uat-cli build",
+    "lint": "eslint \"**/*.{ts,tsx,js,jsx}\"",
+    "prisma:migrate": "pnpm --filter uat-backend prisma:migrate"
+  },
+  "workspaces": [
+    "backend",
+    "web",
+    "cli"
+  ],
+  "dependencies": {
+    "concurrently": "^9.0.0",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "eslint": "^9.14.0",
+    "typescript": "^5.7.3"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "packageManager": "pnpm@9.0.0"
+}
